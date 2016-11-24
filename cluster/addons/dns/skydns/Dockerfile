@@ -12,7 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM busybox
+FROM centos:7
 MAINTAINER Tim Hockin <thockin@google.com>
 ADD skydns skydns
+RUN yum makecache
+RUN yum install -y netstat telnet gdb strace tcpdump dnsmasq
 ENTRYPOINT ["/skydns"]
